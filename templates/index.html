@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Magic Card Generator</title>
+    <style>
+		body {
+			font-family: Arial, sans-serif;	
+		}
+		
+        header {
+            text-align: center;
+        }
+
+        footer {
+            text-align: center;
+        }
+
+        main {
+            text-align: center;
+        }
+
+		.div-draw-line {
+			border-bottom: 1px solid black;
+			margin: 10px;
+		}
+
+    </style>
+</head>
+<body>
+	<header>
+		<h1>Magic Card Generator</h1>
+		<form method="get">
+			<input type="text" placeholder="Card Name" name="query">
+			<button type="submit">Generate</button>
+		</form>
+	</header>
+	
+    <br>
+
+	<main>
+		<div class="grid-container">
+
+			{% if filename %}
+			<div class="grid-item" style="display: inline-block" style="margin: 5px;">
+                <img width="400px" src="static/generated_cards/{{ filename }}" title=""><br>
+			</div>
+			{% else %}
+				<div style="height: 100px"></div>
+			{% endif %}
+
+
+			<div class="div-draw-line"></div>
+
+			<div style="margin-right:20%;margin-left:20%;">
+				{% for f in previous_filenames %}
+					<div class="grid-item" style="display: inline-block" style="margin: 5px;">
+						<a href="static/generated_cards/{{ f }}"><img width="200px" src="static/generated_cards/{{ f }}" title="{{ f }}"></a><br>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+	</main>
+	
+</body>
+</html>
